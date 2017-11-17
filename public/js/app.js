@@ -24,6 +24,9 @@ $("#populate-items").on("click", function() {
 });
 
 $("#items-container").on("click", ".save-item", function() {
-	alert('clicked');
+	var dataId = $(this).attr("data-id");
+
+	
+
 
 });
