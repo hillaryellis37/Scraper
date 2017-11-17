@@ -1,9 +1,9 @@
-$("#populate-articles").on("click", function() {
-	$.getJSON("/api/articles", function(data) {
+$("#populate-items").on("click", function() {
+	$.getJSON("/api/items", function(data) {
 	  // For each one
 	  for (var i = 0; i < data.length; i++) {
 	    // Display the apropos information on the page
-	    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+	    $("#items").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
 	  }
 	});
 });

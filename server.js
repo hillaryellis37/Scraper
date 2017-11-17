@@ -31,7 +31,7 @@ require("./routes/html-routes.js")(app);
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/hillaryscraper", {
+mongoose.connect("mongodb://localhost/poshmarkscraper", {
   useMongoClient: true
 });
 
