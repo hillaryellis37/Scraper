@@ -3,18 +3,33 @@
   <head>
     <meta charset="UTF-8">
     <title>PoshMark Scraper</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
   </head>
       
   <body>
-    <div id="wrapper">
+    <div class="container">
+      
       <h2>Poshmark Scraper</h2>
       <button id="populate-items">Click to populate articles</button>
-      <div id="items"></div>
-      <div id="notes"></div>
+      <button id="saved-items">Saved Items</button>
+      <div class="row">
+        <div class="col-md-3">     
+          <div id="saved-container">
+          
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div id="items-container">      
+          
+          </div>
+        </div>
+      </div>
+    
     </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   <script src="js/app.js"></script>
   </body>
 
