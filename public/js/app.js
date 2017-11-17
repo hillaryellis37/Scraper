@@ -12,8 +12,8 @@ $("#populate-items").on("click", function() {
               				"<div class='item-details'>"+
                 				"<p>"+ data[i].title + "</p>"+
               				"</div>"+
-              				"<div class='save-item'>"+
-              					"<button>Save</button>"+
+              				"<div class='button-container'>"+
+              					"<button class='save-item' data-id='"+ data[i]._id +"'>Save</button>"+
               				"</div>"+
             		  	"</div>"+
           			  "</div>";
@@ -21,4 +21,9 @@ $("#populate-items").on("click", function() {
 	    $("#items-container").append(div);
 	  }
 	});
+});
+
+$("#items-container").on("click", ".save-item", function() {
+	alert('clicked');
+
 });

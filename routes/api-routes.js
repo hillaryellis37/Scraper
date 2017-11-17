@@ -50,5 +50,21 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/api/items/:id", function(req, res) {
+  // Grab every document in the Articles collection
+    db.Item
+      .findOne({ _id: req.params.id })
+      .then(function(dbItem) {
+        // If we were able to successfully find Articles, send them back to the client
+        res.json(dbItem);
+      })
+      .catch(function(err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+      });
+  });
+
+
+
 
 };
