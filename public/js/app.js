@@ -80,3 +80,15 @@ $("#items-container").on("click", ".save-item", function() {
 		});
 	});
 });
+
+$("#saved-container").on("click", ".remove", function() {
+	var itemId = $(this).attr("data-id");
+	console.log($(this).closest(".tile").remove());
+
+	$.ajax({
+		method: "DELETE",
+		url: "/api/saved/" + itemId,
+	}).done(function(){});
+
+
+});

@@ -69,7 +69,6 @@ module.exports = function(app) {
     db.Save
       .create(req.body)
       .then(function(dbSave) {
-        console.log(dbSave);
         res.json(dbSave);
       })
       .catch(function(err) {
@@ -91,6 +90,16 @@ module.exports = function(app) {
       });
   
   });  
+
+  app.delete("/api/saved/:id", function(req, res) {
+    db.Save
+    .findOne({_id: req.params.id})
+    .then(function(dbItem) {
+        dbItem.remove();
+        res.json(dbItem);
+    });
+
+  });
 
 
 
