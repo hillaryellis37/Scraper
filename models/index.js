@@ -1,4 +1,5 @@
 module.exports = {
   Item: require("./Item"),
-  Comment: require("./Comment")
+  Comment: require("./Comment"),
+  Save: require("./Save")
 };

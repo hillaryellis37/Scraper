@@ -64,6 +64,34 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/items/saved", function(req, res) {
+    console.log(req.body);
+    db.Save
+      .create(req.body)
+      .then(function(dbSave) {
+        console.log(dbSave);
+        res.json(dbSave);
+      })
+      .catch(function(err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+      });
+  
+  });
+
+  app.get("/api/saved", function(req, res) {
+    db.Save
+      .find({})
+      .then(function(dbSaved) {
+        res.json(dbSaved);
+
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  
+  });  
+
 
 
 
