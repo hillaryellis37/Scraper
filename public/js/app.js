@@ -36,7 +36,7 @@ $("#populate-items").on("click", function() {
                 				"<p>"+ data[i].title + "</p>"+
               				"</div>"+
               				"<div class='button-container'>"+
-              					"<button class='save-item' data-id='"+ data[i]._id +"'>Save</button>"+
+              					"<button class='save-item btn btn-primary'  type='button' data-toggle='modal' data-target='#exampleModal' data-id='"+ data[i]._id +"'>Save</button>"+
               				"</div>"+
             		  	"</div>"+
           			  "</div>";
@@ -70,8 +70,8 @@ $("#items-container").on("click", ".save-item", function() {
                 				"<p>"+ savedItem.title + "</p>"+
               				"</div>"+
               				"<div class='button-container'>"+
-              					"<button class='comment' data-id='"+ savedItem._id +"'>Comment</button>"+
-              					"<button class='remove' data-id='"+ savedItem._id +"'>Delete from Saved</button>"+
+              					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#exampleModal' data-id='"+ savedItem._id +"'>Comment</button>"+
+              					"<button class='remove btn btn-primary' data-id='"+ savedItem._id +"'>Delete From Saved</button>"+
               				"</div>"+
             		  	"</div>"+
           			  "</div>";
@@ -90,5 +90,9 @@ $("#saved-container").on("click", ".remove", function() {
 		url: "/api/saved/" + itemId,
 	}).done(function(){});
 
+});
+
+$("#saved-container").on("click", ".comment", function() {
+	alert("clicked");
 
 });

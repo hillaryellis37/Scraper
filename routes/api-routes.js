@@ -96,11 +96,25 @@ module.exports = function(app) {
     .findOne({_id: req.params.id})
     .then(function(dbItem) {
         dbItem.remove();
-        res.json(dbItem);
     });
 
   });
 
+  app.post("/api/comment/:id", function(req, res) {
+    db.Comment
+    .create(req.body)
+    then(function(addComment) {
+      return db.Save.findOneAndUpdate({ _id: req.params.id }, { comment: addComment._id }, { new: true });
+    })
+    .then(function(seeComment) {
+      res.json(seeComment);
+
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+
+  });
 
 
 
