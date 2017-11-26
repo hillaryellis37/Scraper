@@ -78,7 +78,8 @@ module.exports = function(app) {
   
   });
 
-  app.get("/api/saved", function(req, res) {
+  app.get("/api/saved/", function(req, res) {
+
     db.Save
       .find({})
       .then(function(dbSaved) {
@@ -91,6 +92,21 @@ module.exports = function(app) {
   
   });  
 
+  app.get("/api/saved/:id", function(req, res) {
+
+    db.Save
+      .findOne({_id: req.params.id})
+      .populate("comment")
+      .then(function(dbSaved) {
+        res.json(dbSaved);
+
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  
+  }); 
+
   app.delete("/api/saved/:id", function(req, res) {
     db.Save
     .findOne({_id: req.params.id})
@@ -100,10 +116,10 @@ module.exports = function(app) {
 
   });
 
-  app.post("/api/comment/:id", function(req, res) {
+  app.post("/api/saved/:id", function(req, res) {
     db.Comment
     .create(req.body)
-    then(function(addComment) {
+    .then(function(addComment) {
       return db.Save.findOneAndUpdate({ _id: req.params.id }, { comment: addComment._id }, { new: true });
     })
     .then(function(seeComment) {
@@ -114,6 +130,17 @@ module.exports = function(app) {
       res.json(err);
     });
 
+  });
+
+  app.get("/api/comments", function(req, res) {
+    db.Comment
+    .find({})
+    .then(function(dbComment) {
+      res.json(dbComment);
+    })
+    .catch(function(err) {
+      res.json(err);
+    })
   });
 
 

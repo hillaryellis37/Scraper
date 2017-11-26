@@ -1,3 +1,5 @@
+var itemID;
+
 $.getJSON("/api/saved", function(data) {
 	
 	for (var i = 0; i < data.length; i++) {
@@ -9,8 +11,8 @@ $.getJSON("/api/saved", function(data) {
                 			"<p>"+ data[i].title + "</p>"+
               			"</div>"+
               			"<div class='button-container'>"+
-              				"<button class='comment' data-id='"+ data[i]._id +"'>Comment</button>"+
-              				"<button class='remove' data-id='"+ data[i]._id +"'>Delete from Saved</button>"+
+              					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ data[i]._id +"'>Comment</button>"+
+              					"<button class='remove btn btn-primary' data-id='"+ data[i]._id +"'>Delete From Saved</button>"+
               			"</div>"+
             		  	"</div>"+
           			  "</div>";
@@ -47,7 +49,6 @@ $("#populate-items").on("click", function() {
 });
 
 $("#items-container").on("click", ".save-item", function() {
-	alert("clicked");
 	var dataId = $(this).attr("data-id");
 
 	$.getJSON("api/items/" + dataId, function(data) {
@@ -70,7 +71,7 @@ $("#items-container").on("click", ".save-item", function() {
                 				"<p>"+ savedItem.title + "</p>"+
               				"</div>"+
               				"<div class='button-container'>"+
-              					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#exampleModal' data-id='"+ savedItem._id +"'>Comment</button>"+
+              					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ savedItem._id +"'>Comment</button>"+
               					"<button class='remove btn btn-primary' data-id='"+ savedItem._id +"'>Delete From Saved</button>"+
               				"</div>"+
             		  	"</div>"+
@@ -82,17 +83,35 @@ $("#items-container").on("click", ".save-item", function() {
 });
 
 $("#saved-container").on("click", ".remove", function() {
-	var itemId = $(this).attr("data-id");
-	console.log($(this).closest(".tile").remove());
+	itemID = $(this).attr("data-id");
+	
+	$(this).closest(".tile").remove();
 
 	$.ajax({
 		method: "DELETE",
-		url: "/api/saved/" + itemId,
+		url: "/api/saved/" + itemID,
 	}).done(function(){});
 
 });
 
 $("#saved-container").on("click", ".comment", function() {
-	alert("clicked");
+    itemID = $(this).closest('.tile').attr('data-id');
+});
+
+$('#addCommentBtn').on("click", function() {
+    var newComment = $('.new-comment').val().trim();
+    var userName = $('.username').val().trim();
+    console.log(itemID);
+
+    $.ajax({
+    	method: "POST",
+    	url: "/api/saved/" + itemID,
+    	data: {
+    		username: userName,
+    		body: newComment
+    	}		   	
+    }).done(function(dbComment) {
+    	console.log(dbComment.comment);
+    });
 
 });
