@@ -84,5 +84,20 @@ h2 {
 	align-items: center;
 	justify-content: left;
 	margin-left: .75rem;
+}
+
+.item-details {
+	padding: 10px;
+
+}
+
+.comment,
+.remove,
+.save {
+	margin: 2.5px;
+}
+
+.item-details p, hr {
+	margin: 8px;
 
 }

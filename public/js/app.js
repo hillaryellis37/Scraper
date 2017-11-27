@@ -8,13 +8,16 @@ $.getJSON("/api/saved", function(data) {
                 			"<img src='" + data[i].img + "'>"+
               			"</a>"+
               			"<div class='item-details'>"+
-                			"<p>"+ data[i].title + "</p>"+
-              			"</div>"+
-              			"<div class='button-container'>"+
-              					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ data[i]._id +"'>Comment</button>"+
-              					"<button class='remove btn btn-primary' data-id='"+ data[i]._id +"'>Delete From Saved</button>"+
-              			"</div>"+
+                			"<p style='height: 40px;'>"+ data[i].title + "</p>"+
+                			"<hr style='height: 2px;'>" +
+              	
+	              			"<div style='height: 20px;' class='button-container'>"+
+	              					"<button class='comment btn btn-secondary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ data[i]._id +"'>Comment</button>"+
+	              					"<button class='remove btn btn-secondary' data-id='"+ data[i]._id +"'>Delete From Saved</button>"+
+	              			"</div>"+
+	              		"</div>"+
           			"</div>";
+
 		
 		var thumbnailDiv =  "<div data-id='"+ data[i]._id +"' class='thumbnail'>"+
 		              				"<a class='covershot-con' href='" + data[i].link + "'>"+
@@ -43,12 +46,12 @@ $("#populate-items").on("click", function() {
                 				"<img src='" + data[i].img + "'>"+
               				"</a>"+
               				"<div class='item-details'>"+
-                				"<p>"+ data[i].title + "</p>"+
-              				"</div>"+
-              				"<div class='button-container'>"+
-              					"<button class='save-item btn btn-primary'  type='button' data-toggle='modal' data-target='#exampleModal' data-id='"+ data[i]._id +"'>Save</button>"+
-              				"</div>"+
-            		  	"</div>"+
+                				"<p style='height: 40px;'>"+ data[i].title + "</p>"+
+            					"<hr style='height: 2px;'>" +
+	              				"<div style='height: 20px;'class='button-container'>"+
+	              					"<button class='save-item btn btn-secondary'  type='button' data-toggle='modal' data-target='#exampleModal' data-id='"+ data[i]._id +"'>Save Item</button>"+
+	              				"</div>"+
+            		  		"</div>"+
           			  "</div>";
 	    // Display the apropos information on the page
 	    $("#items-container").prepend(div);
