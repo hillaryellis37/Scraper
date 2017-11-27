@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>PoshMark Scraper</title>
+    <title>POSHMARK Closet Scraper</title>
     <link rel="stylesheet" href="css/reset.css" media="screen" title="no title">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
@@ -10,11 +10,26 @@
       
   <body>
     <div class=".container-fluid">
-      
-      <h2>Poshmark Scraper</h2>
-      <button id="populate-items">Click to populate articles</button>
-      <button id="saved-items">Saved Items</button>
-      
+      <div class="header-nav d-flex align-items-center justify-content-between ">
+        <h2 class="text-justify">POSHMARK Closet Scraper</h2>
+        <ul class="list-inline list d-flex align-items-center"> 
+          <li style="width: 170px;" class="list-inline-item"><a class="img-fluid" href="https://poshmark.com"><img class="img-fluid" src="./images/poshmark-coupons.png"></a></li>
+          <li style="width: 40px;" class="list-inline-item"><a href="https://poshmark.com/closet/hillaryellis37"><img class="rounded-circle img-fluid" src="https://dtpmhvbsmffsz.cloudfront.net/users/2016/11/05/581b428bceb547f4f803d96b/s_581ea25143c67a9bdf18f853.jpg"></a></li>
+        </ul>
+      </div>
+
+      <div class="row"> 
+        <div class="col-md-12">
+          <div class="nav-content border border-left-0 border-right-0 d-flex align-items-center justify-content-between">
+            <ul class="list-inline list d-flex align-items-center">
+              <li class="list-inline-item"><button id="scrape-items">Scrape Hillary's Closet</button></li>
+              <li class="list-inline-item separater">|</li>
+              <li class="list-inline-item"><button id="populate-items">Populate Items</button></li>
+            </ul>
+            <a id="saved-items" href="./saved">See all Saved Items and Comments</a>
+          </div>
+        </div>
+      </div>
 
 
       <div class="row">
@@ -22,7 +37,7 @@
           <div class="header">
             <p>Saved Items</p>
           </div>    
-          <div id="saved-container">
+          <div id="saved-thumbnails-container">
 
             <!-- Button trigger modal -->
             <!-- Modal -->
@@ -57,11 +72,15 @@
           
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 border border-top-0 border-bottom-0 border-right-0">
           <div class="header">
             <p>Scraped Items</p>
+
           </div>
-          <div id="items-container"></div>           
+          <div id="items-container">
+            <p class="instructions">Click "Scrape Hillary's Closet", then "Populate Items" to view current posts</p>
+          </div>  
+
         </div>
       </div>
 

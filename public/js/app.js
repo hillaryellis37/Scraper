@@ -14,10 +14,18 @@ $.getJSON("/api/saved", function(data) {
               					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ data[i]._id +"'>Comment</button>"+
               					"<button class='remove btn btn-primary' data-id='"+ data[i]._id +"'>Delete From Saved</button>"+
               			"</div>"+
-            		  	"</div>"+
-          			  "</div>";
+          			"</div>";
+		
+		var thumbnailDiv =  "<div data-id='"+ data[i]._id +"' class='thumbnail'>"+
+		              				"<a class='covershot-con' href='" + data[i].link + "'>"+
+		                				"<img class='img-thumbnail' src='" + data[i].img + "'>"+
+		              				"</a>"+
+		            		  	"</div>";
+
 
         $("#saved-container").append(div);
+        $("#saved-thumbnails-container").append(thumbnailDiv);
+
 
 	}
 });
@@ -43,7 +51,7 @@ $("#populate-items").on("click", function() {
             		  	"</div>"+
           			  "</div>";
 	    // Display the apropos information on the page
-	    $("#items-container").append(div);
+	    $("#items-container").prepend(div);
 	  }
 	});
 });
@@ -74,10 +82,18 @@ $("#items-container").on("click", ".save-item", function() {
               					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ savedItem._id +"'>Comment</button>"+
               					"<button class='remove btn btn-primary' data-id='"+ savedItem._id +"'>Delete From Saved</button>"+
               				"</div>"+
-            		  	"</div>"+
-          			  "</div>";
+            		  	"</div>";
 
-        $("#saved-container").append(div);
+
+			var thumbnailDiv =  "<div data-id='"+ savedItem._id +"' class='thumbnail'>"+
+		              				"<a class='covershot-con' href='" + savedItem.link + "'>"+
+		                				"<img class='img-thumbnail' src='" + savedItem.img + "'>"+
+		              				"</a>"+
+		            		  	"</div>";
+
+
+        $("#saved-container").prepend(div);
+        $("#saved-thumbnails-container").prepend(thumbnailDiv);
 		});
 	});
 });
