@@ -4,7 +4,7 @@ $.getJSON("/api/saved", function(data) {
 	
 	for (var i = 0; i < data.length; i++) {
 		var div =  "<div data-id='"+ data[i]._id +"' class='tile'>"+
-              			"<a class='covershot-con' href='" + data[i].link + "'>"+
+              			"<a class='covershot-con' href='" + "/api/saved/" + data[i]._id + "'>"+
                 			"<img src='" + data[i].img + "'>"+
               			"</a>"+
               			"<div class='item-details'>"+
@@ -20,7 +20,7 @@ $.getJSON("/api/saved", function(data) {
 
 		
 		var thumbnailDiv =  "<div data-id='"+ data[i]._id +"' class='thumbnail'>"+
-		              				"<a class='covershot-con' href='" + data[i].link + "'>"+
+		              				"<a class='covershot-con' href='" + "/api/saved/" + data[i]._id + "'>"+
 		                				"<img class='img-thumbnail' src='" + data[i].img + "'>"+
 		              				"</a>"+
 		            		  	"</div>";
@@ -74,28 +74,28 @@ $("#items-container").on("click", ".save-item", function() {
 			}
 		}).done(function(savedItem) {
 			
-			var div =  "<div data-id='"+ savedItem._id +"' class='tile'>"+
-              				"<a class='covershot-con' href='" + savedItem.link + "'>"+
-                				"<img src='" + savedItem.img + "'>"+
-              				"</a>"+
-              				"<div class='item-details'>"+
-                				"<p>"+ savedItem.title + "</p>"+
-              				"</div>"+
-              				"<div class='button-container'>"+
-              					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ savedItem._id +"'>Comment</button>"+
-              					"<button class='remove btn btn-primary' data-id='"+ savedItem._id +"'>Delete From Saved</button>"+
-              				"</div>"+
-            		  	"</div>";
+			// var div =  "<div data-id='"+ savedItem._id +"' class='tile'>"+
+   //            				"<a class='covershot-con' href='" + savedItem.link + "'>"+
+   //              				"<img src='" + savedItem.img + "'>"+
+   //            				"</a>"+
+   //            				"<div class='item-details'>"+
+   //              				"<p>"+ savedItem.title + "</p>"+
+   //            				"</div>"+
+   //            				"<div class='button-container'>"+
+   //            					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ savedItem._id +"'>Comment</button>"+
+   //            					"<button class='remove btn btn-primary' data-id='"+ savedItem._id +"'>Delete From Saved</button>"+
+   //            				"</div>"+
+   //          		  	"</div>";
 
 
 			var thumbnailDiv =  "<div data-id='"+ savedItem._id +"' class='thumbnail'>"+
-		              				"<a class='covershot-con' href='" + savedItem.link + "'>"+
+		              				"<a class='covershot-con' href='" + "/api/saved/" + savedItem._id + "'>"+
 		                				"<img class='img-thumbnail' src='" + savedItem.img + "'>"+
 		              				"</a>"+
 		            		  	"</div>";
 
 
-        $("#saved-container").prepend(div);
+        // $("#saved-container").prepend(div);
         $("#saved-thumbnails-container").prepend(thumbnailDiv);
 		});
 	});
