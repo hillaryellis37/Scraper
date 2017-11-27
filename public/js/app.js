@@ -74,31 +74,24 @@ $("#items-container").on("click", ".save-item", function() {
 			}
 		}).done(function(savedItem) {
 			
-			// var div =  "<div data-id='"+ savedItem._id +"' class='tile'>"+
-   //            				"<a class='covershot-con' href='" + savedItem.link + "'>"+
-   //              				"<img src='" + savedItem.img + "'>"+
-   //            				"</a>"+
-   //            				"<div class='item-details'>"+
-   //              				"<p>"+ savedItem.title + "</p>"+
-   //            				"</div>"+
-   //            				"<div class='button-container'>"+
-   //            					"<button class='comment btn btn-primary' type='button' data-toggle='modal' data-target='#commentModal' data-id='"+ savedItem._id +"'>Comment</button>"+
-   //            					"<button class='remove btn btn-primary' data-id='"+ savedItem._id +"'>Delete From Saved</button>"+
-   //            				"</div>"+
-   //          		  	"</div>";
-
-
 			var thumbnailDiv =  "<div data-id='"+ savedItem._id +"' class='thumbnail'>"+
 		              				"<a class='covershot-con' href='" + "/api/saved/" + savedItem._id + "'>"+
 		                				"<img class='img-thumbnail' src='" + savedItem.img + "'>"+
 		              				"</a>"+
 		            		  	"</div>";
 
-
-        // $("#saved-container").prepend(div);
         $("#saved-thumbnails-container").prepend(thumbnailDiv);
 		});
 	});
+});
+
+$('#scrape-items').on("click", function() {
+	$.ajax({
+		method: "GET",
+		url: "/scrape"
+	}).done(function(){
+		alert("Scrape complete. You may now populate items");
+	})
 });
 
 $("#saved-container").on("click", ".remove", function() {
